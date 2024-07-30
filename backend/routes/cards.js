@@ -1,31 +1,27 @@
 const express = require('express')
+const {
+    createCard,
+    getCards,
+    getSingleCard,
+    deleteCard,
+    updateCard,
+} = require('../controllers/cardController')
 
 const router = express.Router({ mergeParams: true })
 
 // GET all cards
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all cards'})
-})
+router.get('/', getCards)
 
 // GET a single card
-router.get('/:cardId', (req, res) => {
-    res.json({mssg: 'GET a single card'})
-})
+router.get('/:cardId', getSingleCard)
 
 // POST a new card
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a new card'})
-})
+router.post('/', createCard)
 
 // Delete an existing card
-router.delete('/:cardId', (req, res) => {
-    res.json({mssg: 'DELETE an existing card'})
-})
+router.delete('/:cardId', deleteCard)
 
 // Update an existing card
-router.patch('/:cardId', (req, res) => {
-    res.json({mssg: 'UPDATE an existing card'})
-})
-
+router.patch('/:cardId', updateCard)
 
 module.exports = router
